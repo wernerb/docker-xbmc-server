@@ -1,0 +1,24 @@
+<advancedsettings>
+	<videolibrary>
+		<importwatchedstate>true</importwatchedstate>
+		<dateadded>0</dateadded>
+		<backgroundupdate>true</backgroundupdate>
+	</videolibrary>
+	<musiclibrary>
+		<backgroundupdate>true</backgroundupdate>
+	</musiclibrary>
+	<videodatabase>
+		<type>mysql</type>
+		<host>192.168.1.50</host>
+		<port>3306</port>
+		<user>xbmc</user>
+		<pass>xbmc</pass>
+	</videodatabase>
+	<musicdatabase>
+		<type>mysql</type>
+		<host>192.168.1.50</host>
+		<port>3306</port>
+		<user>xbmc</user>
+		<pass>xbmc</pass>
+	</musicdatabase>
+</advancedsettings>
