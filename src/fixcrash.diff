@@ -7,7 +7,7 @@ index de879ff..e55a96f 100644
          return NPT_SUCCESS;
      }
 +    
-+    if (file_path.Left(12).Compare("image://video", true) == 0) {
++    if (file_path.Left(13).Compare("image://video", true) == 0) {
 +        response.SetStatus(404, "File Not Found");
 +        return NPT_SUCCESS;
 +    }
