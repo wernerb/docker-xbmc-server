@@ -30,13 +30,13 @@ RUN (cd xbmc && ./bootstrap && ./configure --enable-nfs --enable-upnp --enable-s
 
 
 #remove headers
-RUN (apt-get remove -y libsdl-dev libsdl-image1.2-dev libsdl-gfx1.2-dev libsdl-mixer1.2-dev libfribidi-dev liblzo2-dev libfreetype6-dev libsqlite3-dev libogg-dev libasound2-dev libglew-dev libcurl3 libcurl4-gnutls-dev libxrender-dev libmad0-dev libogg-dev libsmbclient-dev libmysqlclient-dev libpcre3-dev libdbus-1-dev libhal-dev libhal-storage-dev libjasper-dev libfontconfig-dev libbz2-dev libboost-dev libenca-dev libxt-dev libxmu-dev libpng-dev libjpeg-dev libpulse-dev mesa-utils libcdio-dev libsamplerate-dev libmpeg3-dev libflac-dev libiso9660-dev libass-dev libssl-dev libmpeg2-4-dev libmicrohttpd-dev libmodplug-dev python-dev libyajl-dev libboost-thread-dev libplist-dev libtinyxml-dev libcap-dev libltdl-dev libtag1-dev libtiff-dev libnfs-dev) 
+RUN (apt-get remove -y libsdl-dev libsdl-image1.2-dev libsdl-gfx1.2-dev libsdl-mixer1.2-dev libfribidi-dev liblzo2-dev libfreetype6-dev libsqlite3-dev libogg-dev libasound2-dev libglew-dev libcurl3 libcurl4-gnutls-dev libxrender-dev libmad0-dev libogg-dev libsmbclient-dev libmysqlclient-dev libpcre3-dev libdbus-1-dev libhal-dev libhal-storage-dev libjasper-dev libfontconfig-dev libbz2-dev libboost-dev libenca-dev libxt-dev libxmu-dev libpng-dev libjpeg-dev libpulse-dev mesa-utils libcdio-dev libsamplerate-dev libmpeg3-dev libflac-dev libiso9660-dev libass-dev libssl-dev libmpeg2-4-dev libmicrohttpd-dev libmodplug-dev python-dev libyajl-dev libboost-thread-dev libplist-dev libtinyxml-dev libcap-dev libltdl-dev  libtiff-dev libnfs-dev) 
+#RUN (apt-get remove -y libtag1-dev)
 
 #clean java crap
 RUN (apt-get clean && rm -rf /usr/lib/jvm/*)
 
-#Move config files to use.
-ADD userdata/guisettings.xml /opt/xbmc-server/portable_data/userdata/
+#Move confi files to use.
 ADD userdata/advancedsettings.xml /opt/xbmc-server/portable_data/userdata/
 
 #Initialize all the settings for xbmc by running and killing it.

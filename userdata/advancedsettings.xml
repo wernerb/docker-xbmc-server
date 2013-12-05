@@ -1,8 +1,10 @@
 <advancedsettings>
 	<videolibrary>
+		<actorthumbs>false</actorthumbs>
 		<importwatchedstate>true</importwatchedstate>
 		<dateadded>0</dateadded>
 		<backgroundupdate>true</backgroundupdate>
+		<updateonstartup>true</updateonstartup>
 	</videolibrary>
 	<musiclibrary>
 		<backgroundupdate>true</backgroundupdate>
@@ -21,4 +23,38 @@
 		<user>xbmc</user>
 		<pass>xbmc</pass>
 	</musicdatabase>
+	<videoscanner>
+		<ignoreerrors>true</ignoreerrors> <!-- Set to true to silently ignore errors while scanning videos. This prevents the error dialogue box, so you don't have to keep hitting "yes" to keep scanning.-->
+	</videoscanner>
+	<splash>false</splash>
+	<bginfoloadermaxthreads>2</bginfoloadermaxthreads>
+	<myvideos>
+		<extractflags>false</extractflags>
+		<extractthumb>false</extractthumb>
+	</myvideos>
+	<lookandfeel>
+		<enablerssfeeds>false</enablerssfeeds>
+	</lookandfeel>
+	<audiooutput>
+		<guisoundmode>0</guisoundmode>
+		<ac3passthrough>false</ac3passthrough>
+		<dtspassthrough>false</dtspassthrough>
+		<multichannellpcm>false</multichannellpcm>
+		<truehdpassthrough>false></truehdpassthrough>
+		<dtshdpassthrough>false</dtshdpassthrough>
+		<mode>2</mode>
+	</audiooutput>
+	<videoscreen>
+		<vsync>2</vsync>
+	</videoscreen>
+	<input>
+		<enablemouse>false</enablemouse>
+		<remoteaskeyboard>false</remoteaskeyboard>
+	</input>
+	<general>
+		<addonnotifications>false</addonnotifications>
+	</general>
+	<skinsettings>
+		<setting type="bool" name="skin.confluence.FirstTimeRun">false</setting>
+	</skinsettings>
 </advancedsettings>
