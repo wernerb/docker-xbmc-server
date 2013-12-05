@@ -54,7 +54,27 @@
 	<general>
 		<addonnotifications>false</addonnotifications>
 	</general>
+	<services>
+		<devicename>XBMC Server</devicename>
+		<esallinterfaces>false</esallinterfaces>
+		<escontinuousdelay>25</escontinuousdelay>
+		<esenabled>true</esenabled>
+		<esinitialdelay>750</esinitialdelay>
+		<esmaxclients>20</esmaxclients>
+		<esport>9777</esport>
+		<esportrange>10</esportrange>
+		<upnpannounce>true</upnpannounce>
+		<upnprenderer>false</upnprenderer>
+		<upnpserver>true</upnpserver>
+		<webserver>true</webserver>
+		<webserverpassword>xbmc</webserverpassword>
+		<webserverport>8080</webserverport>
+		<webserverusername>xbmc</webserverusername>
+		<webskin>webinterface.default</webskin>
+		<zeroconf>true</zeroconf>
+	</services>
 	<skinsettings>
 		<setting type="bool" name="skin.confluence.FirstTimeRun">false</setting>
 	</skinsettings>
+
 </advancedsettings>
