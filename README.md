@@ -1,4 +1,4 @@
-# Xbmc Server with Docker
+# Xbmc Server Gotham with Docker
 
 This will allow you to serve files through UPnP to your UPnP clients (such as Xbmc). 
 Docker is used to compile and run the headless version of xbmc.
