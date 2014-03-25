@@ -1,8 +1,9 @@
-# Build: 		docker build --rm=true -t xbmc-server .
+# Build: 		
+# 	docker build --rm=true -t wernerb/docker-xbmc-server .
 # Run bridged with UPnP server and webserver in the background: 
-# 			./startXbmc.sh
+#	See README.md for command
 # Run only the libraryscan and quit: 
-#			docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan xbmc-server --no-test --nolirc -p
+#	docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan wernerb/docker-xbmc-server --no-test --nolirc -p
 # See README.md for more up to date documentation.
 # Source: https://github.com/wernerb/docker-xbmc-server
 
@@ -40,5 +41,3 @@ RUN (apt-get install -y fonts-liberation libaacs0 libasound2 libass4 libasyncns0
 EXPOSE 9777/udp 8080/tcp
 
 ENTRYPOINT ["/opt/xbmc-server/xbmc-server","--no-test","--nolirc","-p"]
-
-
