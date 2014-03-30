@@ -89,12 +89,14 @@ You are most likely running docker 0.9 or higher that uses libcontainer and not 
 
         /etc/systemd/system/multi-user.target.wants/docker.service
     
-* For Ubuntu: open `/etc/docker/default` and uncomment and edit the following:
+* For Ubuntu: open `/etc/default/docker` and uncomment and edit the following:
     
         #DOCKER_OPTS="-dns 8.8.8.8 -dns 8.8.4.4"
     to reflect:
     
         DOCKER_OPTS="-e lxc" 
+
+Additionally you may need to install the lxc package, as it is no longer a dependency of Docker
     
 
 __What versions did you test this with?__
