@@ -35,18 +35,19 @@ This also includes some custom patches that will fix crashes. See the FAQ sectio
     The ip,port,user and password refers to your xbmc mysql database.
 
 3. You now are ready to pull and run XBMC. You can either run as a daemon serving your xbmc library through UPnP as well as being capable of updating your library, or you can simply run the container and only update the xbmc library.  
+    Before pulling the image and running check what version you need (gotham/frodo)
+
     * __Daemon__:  
 
         Run the following command to spawn a docker container running xbmc with UPnP:
 
-            $ sudo docker run -d --net=host --priviliged \
-              -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data \
-              -e BIND_ADDR=192.168.1.50 -e LD_PRELOAD=/opt/xbmc-server/bind.so
-              wernerb/docker-xbmc-server
+            $ sudo docker run -d --net=host --privileged /directory/with/xbmcdata:/opt/xbmc-server/portable_data BIND_ADDR=192.168.1.50 -e LD_PRELOAD=/opt/xbmc-server/bind.so wernerb/docker-xbmc-server:gotham
         
-        Ps. Replace `192.168.1.50` with the IP to which you want to bind xbmc to, i.e., your host network ip. Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
-        
-        The webserver is automatically configured and started on port `8089` with the username/password configurable in `userdata/advancedsettings.xml`.
+        Note:
+
+        * Replace `192.168.1.50` with the IP to which you want to bind xbmc to, i.e., your host network ip. Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
+        * Replace `wernerb/docker-xbmc-server:gotham` with `wernerb/docker-xbmc-server:frodo` if you use frodo!
+        * The webserver is automatically configured and started on port `8089` with the username/password configurable in `userdata/advancedsettings.xml`.
     
     * __Single run__: 
                         
