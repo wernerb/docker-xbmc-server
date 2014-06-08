@@ -12,7 +12,7 @@ OBJS := $(SOURCES:.cpp=.o)
 all: xbmc-server
 
 xbmc-server: $(OBJS)
-	$(CC) $(CFLAGS) -o xbmc-server $(OBJS) $(LFLAGS) $(LIBS)
+	$(CC) $(CFLAGS) -o xbmc-server $(OBJS) AppParamParser.o XbmcContext.o $(LFLAGS) $(LIBS)
 
 # Get a .o from a .cpp by calling compiler with cflags and includes (if defined)
 .cpp.o:

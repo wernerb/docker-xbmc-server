@@ -20,7 +20,7 @@
  */
 
 #include "system.h"
-#include "settings/AppParamParser.h"
+#include "AppParamParser.h"
 #include "settings/AdvancedSettings.h"
 #include "GUIInfoManager.h"
 #include "FileItem.h"

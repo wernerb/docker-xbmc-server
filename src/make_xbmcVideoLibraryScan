@@ -12,7 +12,7 @@ OBJS := $(SOURCES:.cpp=.o)
 all: xbmcVideoLibraryScan
 
 xbmcVideoLibraryScan: $(OBJS)
-	$(CC) $(CFLAGS) -o xbmcVideoLibraryScan $(OBJS) $(LFLAGS) $(LIBS)
+	$(CC) $(CFLAGS) -o xbmcVideoLibraryScan $(OBJS) AppParamParser.o XbmcContext.o $(LFLAGS) $(LIBS)
 
 # Get a .o from a .cpp by calling compiler with cflags and includes (if defined)
 .cpp.o:
