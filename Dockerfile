@@ -24,9 +24,10 @@ ADD src/make_xbmc-server xbmc/xbmc/make_xbmc-server
 ADD src/xbmc-server.cpp xbmc/xbmc/xbmc-server.cpp
 ADD src/make_xbmcVideoLibraryScan xbmc/xbmc/make_xbmcVideoLibraryScan
 ADD src/xbmcVideoLibraryScan.cpp xbmc/xbmc/xbmcVideoLibraryScan.cpp
+ADD src/wsnipex-fix-ede443716d0f3e5174674ddad8c5678691143b1b.diff xbmc/wsnipex-fix-ede443716d0f3e5174674ddad8c5678691143b1b.diff
 
-#Apply fix for crashing in UPnP
-RUN (cd xbmc && git apply fixcrash.diff) 
+#Apply fix for crashing in UPnP and wsnipex gotham shared library compile fix
+RUN (cd xbmc && git apply fixcrash.diff && git apply wsnipex-fix-ede443716d0f3e5174674ddad8c5678691143b1b.diff)
 
 #Configure, make, clean
 RUN (cd xbmc && ./bootstrap && ./configure --enable-nfs --enable-upnp --enable-shared-lib --disable-debug --disable-vdpau  --disable-vaapi --disable-crystalhd  --disable-vdadecoder  --disable-vtbdecoder  --disable-openmax  --disable-joystick --disable-xrandr  --disable-rsxs  --disable-projectm --disable-rtmp  --disable-airplay --disable-airtunes --disable-dvdcss --disable-optical-drive  --disable-libbluray --disable-libusb  --disable-libcec  --disable-libmp3lame  --disable-libcap --disable-dbus && make -j2 && cp libxbmc.so /lib && ldconfig && cd xbmc && make -f make_xbmc-server all && make -f make_xbmcVideoLibraryScan all && mkdir -p /opt/xbmc-server/portable_data/ && cp xbmc-server xbmcVideoLibraryScan /opt/xbmc-server && cd .. && cp -R addons language media sounds system userdata /opt/xbmc-server/ && cd / && rm -rf /xbmc)
