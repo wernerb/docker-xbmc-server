@@ -2,12 +2,12 @@
 
 This will allow you to serve files through the XBMC UPnP Library to your UPnP client/players (such as Xbmc or Chromecast). 
 
-Docker is used to compile and run the latest headless version of XBMC Frodo
+Docker is used to compile and run the latest headless version of XBMC Gotham/Frodo
 
 This also includes some custom patches that will fix crashes. See the FAQ section for details.
 
 ### Preqrequisites:
-* Docker version 0.12+ 
+* Docker version 0.12+ (Follow the [installation instructions](https://docs.docker.com/))
 
 ### Quick start
 
@@ -34,18 +34,8 @@ This also includes some custom patches that will fix crashes. See the FAQ sectio
         
     The ip,port,user and password refers to your xbmc mysql database.
 
-3. You now are ready to pull and run XBMC. There are two possible ways to use this container. You can either have it run as a daemon serving your xbmc library through UPnP as well as being capable of updating your library, or you can simply run the container and only update the xbmc library.  
-    * __Just Update the Xbmc library__: 
-                        
-        Simply run docker with the following command each time you want the library to be updated:
-        
-            $ sudo docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan xbmc-server --no-test --nolirc -p
-        
-        Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
-
-        Use this command in your automation scripts or in a crontab. Keep in mind that a library scan can take some time.
-
-    * __UPnP Server__:  
+3. You now are ready to pull and run XBMC. You can either run as a daemon serving your xbmc library through UPnP as well as being capable of updating your library, or you can simply run the container and only update the xbmc library.  
+    * __Daemon__:  
 
         Run the following command to spawn a docker container running xbmc with UPnP:
 
@@ -55,12 +45,25 @@ This also includes some custom patches that will fix crashes. See the FAQ sectio
               wernerb/docker-xbmc-server
         
         Ps. Replace `192.168.1.50` with the IP to which you want to bind xbmc to, i.e., your host network ip. Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
+        
+        The webserver is automatically configured and started on port `8089` with the username/password configurable in `userdata/advancedsettings.xml`.
     
+    * __Single run__: 
+                        
+        Simply run docker with the following command each time you want the library to be updated:
+        
+            $ sudo docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan xbmc-server --no-test --nolirc -p
+        
+        Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
+
+        Use this command in your automation scripts or in a crontab. Keep in mind that a library scan can take some time.
+
         
 ### Build the container yourself
-Execute:
+Execute: (replace gotham with master or frodo accordingly)
     
-    docker build --rm=true -t $(whoami)/docker-xbmc-server .
+    $ git checkout gotham
+    $ docker build --rm=true -t $(whoami)/docker-xbmc-server .
     
 Then proceed with the Quick start section.
 
@@ -74,4 +77,5 @@ I discovered that the UPnP server in XBMC was very unstable, and crashed when br
 
 __What versions did you test this with?__
 
-* Docker v0.12: XBMC (12.3 Git:20131212-9ed3e58)
+* Docker v0.12: XBMC (12.3 Git:20131212-9ed3e58) Frodo
+* Docker v0.12: XBMC (13) Gotham

@@ -1,10 +1,27 @@
-# Build: 		
-# 	docker build --rm=true -t wernerb/docker-xbmc-server .
-# Run bridged with UPnP server and webserver in the background: 
-#	See README.md for command
+# docker-xbmc-server
+#
+# Setup: Clone repo then checkout appropriate version
+#   For Frodo:
+#     $ git checkout frodo
+#   For Gotham
+#     $ git checkout gotham
+#   For Master (currently gotham)
+#     $ git checkout master
+#
+# Build:
+# 	$ docker build --rm=true -t $(whoami)/docker-xbmc-server .
+#
+# Run: 
+#   - UPnP server and webserver in the background: (replace ip and xbmc data location)
+#	$ docker run -d --net=host --priviliged \
+#             -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data \
+#             -e BIND_ADDR=192.168.1.50 -e LD_PRELOAD=/opt/xbmc-server/bind.so
+#             $(whoami)/docker-xbmc-server
+#
 # Run only the libraryscan and quit: 
-#	docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan wernerb/docker-xbmc-server --no-test --nolirc -p
-# See README.md for more up to date documentation.
+#	$ docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan $(whoami)/docker-xbmc-server --no-test --nolirc -p
+#
+# See README.md.
 # Source: https://github.com/wernerb/docker-xbmc-server
 
 from ubuntu:12.10
