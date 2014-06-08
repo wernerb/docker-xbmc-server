@@ -68,7 +68,7 @@
 		<upnpserver>true</upnpserver>
 		<webserver>true</webserver>
 		<webserverpassword>xbmc</webserverpassword>
-		<webserverport>8080</webserverport>
+		<webserverport>8089</webserverport>
 		<webserverusername>xbmc</webserverusername>
 		<webskin>webinterface.default</webskin>
 		<zeroconf>true</zeroconf>
