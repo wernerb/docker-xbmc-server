@@ -14,7 +14,7 @@
 # Run your build:
 # There are two choices   
 #   - UPnP server and webserver in the background: (replace ip and xbmc data location)
-#	  $ docker run -d --net=host --privileged -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data -e BIND_ADDR=192.168.1.50 -e LD_PRELOAD=/opt/xbmc-server/bind.so $(whoami)/docker-xbmc-server
+#	  $ docker run -d --net=host --privileged -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data $(whoami)/docker-xbmc-server
 #
 #   - Run only the libraryscan and quit: 
 #	  $ docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan $(whoami)/docker-xbmc-server --no-test --nolirc -p

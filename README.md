@@ -41,17 +41,21 @@ This also includes some custom patches that will fix crashes. See the FAQ sectio
 
         Run the following command to spawn a docker container running xbmc with UPnP:
 
-            $ docker run -d --net=host --privileged -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data -e BIND_ADDR=192.168.1.50 -e LD_PRELOAD=/opt/xbmc-server/bind.so wernerb/docker-xbmc-server:gotham
+            $ docker run -d --net=host --privileged -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data wernerb/docker-xbmc-server:gotham
         
-        Note:
-
-        * Replace `192.168.1.50` with the IP to which you want to bind xbmc to, i.e., your host network ip. Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
         * Replace `wernerb/docker-xbmc-server:gotham` with `wernerb/docker-xbmc-server:frodo` if you use frodo!
+        * Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
+        * If you need to mount extra folders, just use `-v /local/folder/:/remotefolder`. For example, in my case I use `-v /media:/media` 
         * The webserver is automatically configured and started on port `8089` with the username/password configurable in `userdata/advancedsettings.xml`.
+        
+        Extra note:
+
+        * Advanced: If you have problems reaching the web-server then xbmc is binding to the wrong address. Try adding the following after `--privileged`: `-e BIND_ADDR=ipaddress -e LD_PRELOAD=/opt/xbmc-server/bind.so`
+
     
     * __Single run__: 
                         
-        Simply run docker with the following command each time you want the library to be updated:
+        Run docker with the following command each time you want the library to be updated:
         
             $ sudo docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan wernerb/docker-xbmc-server:gotham --no-test --nolirc -p
         
@@ -80,5 +84,5 @@ I discovered that the UPnP server in XBMC was very unstable, and crashed when br
 
 __What versions did you test this with?__
 
+* Docker v0.12: XBMC (13.2ALPHA1 Git:20140607-96b4c73) Gotham
 * Docker v0.12: XBMC (12.3 Git:20131212-9ed3e58) Frodo
-* Docker v0.12: XBMC (13) Gotham
