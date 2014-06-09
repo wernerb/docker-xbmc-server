@@ -41,7 +41,7 @@ This also includes some custom patches that will fix crashes. See the FAQ sectio
 
         Run the following command to spawn a docker container running xbmc with UPnP:
 
-            $ sudo docker run -d --net=host --privileged /directory/with/xbmcdata:/opt/xbmc-server/portable_data BIND_ADDR=192.168.1.50 -e LD_PRELOAD=/opt/xbmc-server/bind.so wernerb/docker-xbmc-server:gotham
+            $ docker run -d --net=host --privileged -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data -e BIND_ADDR=192.168.1.50 -e LD_PRELOAD=/opt/xbmc-server/bind.so wernerb/docker-xbmc-server:gotham
         
         Note:
 
@@ -53,15 +53,17 @@ This also includes some custom patches that will fix crashes. See the FAQ sectio
                         
         Simply run docker with the following command each time you want the library to be updated:
         
-            $ sudo docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan xbmc-server --no-test --nolirc -p
+            $ sudo docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan wernerb/docker-xbmc-server:gotham --no-test --nolirc -p
         
         Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
+
+        Replace `wernerb/docker-xbmc-server:gotham` with `wernerb/docker-xbmc-server:frodo` if you use frodo!
 
         Use this command in your automation scripts or in a crontab. Keep in mind that a library scan can take some time.
 
         
 ### Build the container yourself
-Execute: (replace gotham with master or frodo accordingly)
+Replace gotham with master or frodo accordingly if necessary:
     
     $ git checkout gotham
     $ docker build --rm=true -t $(whoami)/docker-xbmc-server .
