@@ -25,6 +25,13 @@
 from ubuntu:12.10
 maintainer Werner Buck "email@wernerbuck.nl"
 
+# Set locale to UTF8
+ENV LANGUAGE en_US.UTF-8
+ENV LANG en_US.UTF-8
+RUN locale-gen en_US en_US.UTF-8
+RUN update-locale LANG=en_US.UTF-8
+RUN dpkg-reconfigure locales
+
 # Install java
 RUN apt-get update && apt-get -y install git openjdk-7-jre-headless
 
