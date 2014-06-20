@@ -41,7 +41,7 @@ RUN apt-get update && \
 RUN git clone https://github.com/xbmc/xbmc.git -b Gotham --depth=1
 
 # Add patches and xbmc-server files
-ADD src/fixcrash.diff /tmp/xbmc/fixcrash.diff
+ADD src/fixcrash.diff xbmc/fixcrash.diff
 ADD src/make_xbmc-server xbmc/xbmc/make_xbmc-server
 ADD src/xbmc-server.cpp xbmc/xbmc/xbmc-server.cpp
 ADD src/make_xbmcVideoLibraryScan xbmc/xbmc/make_xbmcVideoLibraryScan
@@ -65,6 +65,7 @@ RUN apt-get install -y build-essential gawk pmount libtool nasm yasm automake cm
 		--enable-nfs \
 		--enable-upnp \
 		--enable-shared-lib \
+		--enable-ssh \
 		--enable-libbluray \
 		--disable-debug \
 		--disable-vdpau \
@@ -85,8 +86,17 @@ RUN apt-get install -y build-essential gawk pmount libtool nasm yasm automake cm
 		--disable-libusb \
 		--disable-libcec \
 		--disable-libmp3lame \
-		--disable-libcap 
-		--disable-dbus && \
+		--disable-libcap \
+		--disable-udev \
+		--disable-libvorbisenc \
+		--disable-asap-codec \
+		--disable-afpclient \
+		--disable-goom \
+		--disable-avahi \
+		--disable-non-free \
+		--disable-pulse \
+		--disable-dbus \
+		--disable-alsa && \
 	make -j2 && \
 	cp libxbmc.so /lib && \
 	ldconfig && \
