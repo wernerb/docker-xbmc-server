@@ -92,11 +92,16 @@ RUN apt-get install -y build-essential gawk pmount libtool nasm yasm automake cm
 		--disable-asap-codec \
 		--disable-afpclient \
 		--disable-goom \
+		--disable-fishbmc \
+		--disable-spectrum \
+		--disable-waveform \
 		--disable-avahi \
 		--disable-non-free \
+		--disable-texturepacker \
 		--disable-pulse \
 		--disable-dbus \
-		--disable-alsa && \
+		--disable-alsa \
+		--disable-hal && \
 	make -j2 && \
 	cp libxbmc.so /lib && \
 	ldconfig && \
