@@ -34,7 +34,8 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 # Install java, git wget and supervisor
-RUN apt-get update && \
+RUN sed -i -e 's/archive.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list && \
+    apt-get update && \
 	apt-get -y install git openjdk-7-jre-headless supervisor
 
 # Download XBMC, pick version from github
