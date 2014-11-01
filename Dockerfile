@@ -1,12 +1,10 @@
 # docker-xbmc-server
 #
 # Setup: Clone repo then checkout appropriate version
-#   For Frodo:
-#     $ git checkout frodo
-#   For Gotham
-#     $ git checkout gotham
-#   For Master (currently gotham)
+#   For stable (Gotham)
 #     $ git checkout master
+#   For experimental (Helix/Kodi)
+#     $ git checkout experimental
 #
 # Create your own Build:
 # 	$ docker build --rm=true -t $(whoami)/docker-xbmc-server .
