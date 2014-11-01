@@ -40,7 +40,7 @@ RUN sed -i -e 's/archive.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.
 	apt-get -y install git openjdk-7-jre-headless supervisor
 
 # Download XBMC, pick version from github
-RUN git clone https://github.com/xbmc/xbmc.git -b Gotham --depth=1
+RUN git clone https://github.com/xbmc/xbmc.git --depth=1
 
 # Add patches and xbmc-server files
 ADD src/fixcrash.diff xbmc/fixcrash.diff
