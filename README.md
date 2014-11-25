@@ -1,6 +1,6 @@
 # docker-xbmc-server
 
-This will allow you to serve files through the XBMC UPnP Library to your UPnP client/players (such as Xbmc or Chromecast). 
+This will allow you to serve files through the kodi UPnP Library to your UPnP client/players (such as Kodi or Chromecast). 
 
 Docker is used to compile and run the latest headless version of XBMC/Kodi 
 
@@ -41,29 +41,17 @@ This also includes some custom patches that will fix crashes. See the FAQ sectio
 
         Run the following command to spawn a docker container running xbmc with UPnP:
 
-            $ docker run -d --net=host --privileged -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data wernerb/docker-xbmc-server
+            $ docker run -d --net=host --privileged -v /directory/with/xbmcdata:/opt/kodi-server/share/kodi/portable_data wernerb/docker-xbmc-server
         
         * Replace `wernerb/docker-xbmc-server` with `wernerb/docker-xbmc-server:experimental` if you want to use the latest unreleased xbmc version
         * Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
         * If you need to mount extra folders, just use `-v /local/folder/:/remotefolder`. For example, in my case I use `-v /media:/media` 
         * The webserver is automatically configured and started on port `8089` with the username/password configurable in `userdata/advancedsettings.xml`.
         
-    * __Single run__: 
-                        
-        Run docker with the following command each time you want the library to be updated:
-        
-            $ sudo docker run -v /directory/with/xbmcdata:/opt/xbmc-server/portable_data --entrypoint=/opt/xbmc-server/xbmcVideoLibraryScan wernerb/docker-xbmc-server --no-test --nolirc -p
-        
-        Replace `/directory/with/xbmcdata` with the folder where you would like to store the xbmc data. Point it to the full path to the xbmcdata folder of this repository.
-
-        Replace `wernerb/docker-xbmc-server` with `wernerb/docker-xbmc-server:experimental` if you want to use the latest unreleased xbmc version
-        Use this command in your automation scripts or in a crontab. Keep in mind that a library scan can take some time.
-
-        
 ### Build the container yourself
 Note: Replace 'master' with 'experimental' to build against the latest xbmc.  
   
-    $ git checkout master 
+    $ git checkout experimental 
     $ docker build --rm=true -t $(whoami)/docker-xbmc-server .
     
 Then proceed with the Quick start section.
