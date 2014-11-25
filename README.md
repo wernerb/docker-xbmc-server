@@ -1,5 +1,7 @@
 # docker-xbmc-server
 
+**/!\ WARNING: Kodi portable_data dir change. It's now /opt/kodi-server/share/kodi/portable_data**
+
 This will allow you to serve files through the kodi UPnP Library to your UPnP client/players (such as Kodi or Chromecast). 
 
 Docker is used to compile and run the latest headless version of XBMC/Kodi 
