@@ -103,13 +103,6 @@ index d7175a7..cbd2db8 100644
    "Files.GetDirectory": {
      "type": "method",
      "description": "Get the directories and files in the given directory",
-@@ -2323,4 +2335,4 @@
-     ],
-     "returns": "string"
-   }
--}
-\ No newline at end of file
-+}
 
 From b17978ca8e1ea65577741c8580bb884bce193e7d Mon Sep 17 00:00:00 2001
 From: Tobias Arrskog <topfs2@xbmc.org>
