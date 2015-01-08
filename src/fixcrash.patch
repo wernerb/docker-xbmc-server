@@ -1,0 +1,26 @@
+From 1aca061f863c7694c0690cb582a9b775aa30495c Mon Sep 17 00:00:00 2001
+From: Werner Buck <wernerbuck@gmail.com>
+Date: Thu, 8 Jan 2015 13:48:08 +0100
+Subject: [PATCH] Fix UPnP headless
+
+Preemptively ignores image requests for video and music.
+---
+ xbmc/network/upnp/UPnPServer.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/xbmc/network/upnp/UPnPServer.cpp b/xbmc/network/upnp/UPnPServer.cpp
+index 60c4a9e..7fd905f 100644
+--- a/xbmc/network/upnp/UPnPServer.cpp
++++ b/xbmc/network/upnp/UPnPServer.cpp
+@@ -1186,6 +1186,11 @@ CUPnPServer::ServeFile(const NPT_HttpRequest&              request,
+         return NPT_SUCCESS;
+     }
+ 
++    if (file_path.Left(13).Compare("image://video", true) == 0 || file_path.Left(13).Compare("image://music", true) == 0) {
++        response.SetStatus(404, "File Not Found");
++        return NPT_SUCCESS;
++    }
++
+     if(URIUtils::IsURL((const char*)file_path))
+     {
+       std::string disp = "inline; filename=\"" + URIUtils::GetFileName((const char*)file_path) + "\"";

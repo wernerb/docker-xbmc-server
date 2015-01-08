@@ -42,15 +42,16 @@ RUN apt-get update && \
 RUN git clone https://github.com/xbmc/xbmc.git --depth=1
 
 # Add patches and xbmc-server files
-ADD src/fixcrash.diff xbmc/fixcrash.diff
+# From https://github.com/wernerb/xbmc/commit/1aca061f863c7694c0690cb582a9b775aa30495c
+ADD src/fixcrash.patch xbmc/fixcrash.patch
+# From https://github.com/xbmc/xbmc/pull/5071
 ADD src/5071.patch xbmc/5071.patch
 ADD src/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Apply patches:
-#	fixrash.diff : Fixes crashing in UPnP 
-#	wsnipex-fix-ede443716d0f3e5174674ddad8c5678691143b1b.diff : Fixes shared library compilation on gotham 
+#	fixrash.patch : Fixes crashing in UPnP 
 RUN cd xbmc && \
- git apply fixcrash.diff && \
+ git apply fixcrash.patch && \
  git apply 5071.patch
 
 # Installs xbmc dependencies, configure, make, clean.
