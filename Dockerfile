@@ -1,9 +1,9 @@
 # docker-xbmc-server
 #
 # Setup: Clone repo then checkout appropriate version
-#   For stable (Gotham)
+#   For stable (Helix)
 #     $ git checkout master
-#   For experimental (Helix/Kodi)
+#   For experimental (master development)
 #     $ git checkout experimental
 #
 # Create your own Build:
@@ -39,7 +39,7 @@ RUN apt-get update && \
 	apt-get -y install git openjdk-7-jre-headless supervisor
 
 # Download XBMC, pick version from github
-RUN git clone https://github.com/xbmc/xbmc.git --depth=1
+RUN git clone --depth 1 --branch "14.0-Helix" https://github.com/xbmc/xbmc.git 
 
 # Add patches and xbmc-server files
 ADD src/fixcrash.diff xbmc/fixcrash.diff
@@ -48,7 +48,6 @@ ADD src/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Apply patches:
 #	fixrash.diff : Fixes crashing in UPnP 
-#	wsnipex-fix-ede443716d0f3e5174674ddad8c5678691143b1b.diff : Fixes shared library compilation on gotham 
 RUN cd xbmc && \
  git apply fixcrash.diff && \
  git apply 5071.patch
