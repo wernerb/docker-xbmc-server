@@ -43,6 +43,23 @@ usage: $(basename $0) list | run|start|stop|kill|rm|update|clean [container] | s
    run  = create 
    rm   = remove
 
+   Script to create, start, stop list multiple Kodi docker instances. Comes
+   in handy in multi-profile environments where each user has its own Kodi
+   database which needs to be updated. Allows sending database clean/update
+   signal to each Kodi docker instance. Comes in handy also when just using
+   one Kodi docker instance. Add instances to 'kodi-homes' by creating new
+   directories and copy the default xbmcdata/userdata directory in it. For
+   exampe see kodi-homes/default. Add instance to kodi-headless.conf. Manage
+   the instances using kodi-headless.sh. Require docker and curl.
+
+   Example usage:
+
+   1) ./kodi-headless.sh run default - Create and start docker container for
+      default instance.
+   2) ./kodi-headless.sh list        - List all docker container instances and
+      check up status of each Kodi headless instance running in the container
+   3) ./kodi-headless.sh stop        - Stop *ALL* docker container instances
+
 EOF
    exit 1
 }
